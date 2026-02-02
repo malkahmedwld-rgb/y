@@ -1,0 +1,142 @@
+:root {
+    --paper-width: 210mm;
+    --paper-bg: #ffffff;
+    --text-color: #2c3e50;
+    --primary-color: #1a4d2e; /* نفس الأخضر المستخدم في العرض */
+    --accent-color: #c9a227;
+}
+
+body {
+    background-color: #525659; /* خلفية رمادية داكنة مثل قارئ PDF */
+    font-family: 'Amiri', serif; /* خط مناسب للنصوص الطويلة */
+    margin: 0;
+    padding: 20px;
+    direction: rtl;
+}
+
+/* الأزرار العائمة */
+.floating-controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    color: white;
+}
+
+.download-btn { background-color: #e74c3c; }
+.back-btn { background-color: var(--primary-color); }
+.btn:hover { transform: scale(1.05); }
+
+/* تصميم الورقة */
+.paper-sheet {
+    background-color: var(--paper-bg);
+    width: var(--paper-width);
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 25mm; /* هوامش الورقة */
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+/* الترويسة */
+.paper-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 3px double var(--primary-color);
+    padding-bottom: 20px;
+}
+
+.university-info { font-size: 14px; margin-bottom: 15px; color: #666; font-family: 'Tajawal'; }
+h1 { font-size: 24pt; color: var(--primary-color); margin: 10px 0; font-family: 'Tajawal'; }
+.meta-info { font-weight: bold; color: #444; }
+
+/* النصوص */
+h2 {
+    font-size: 18pt;
+    color: var(--primary-color);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    font-family: 'Tajawal';
+}
+
+h3 { font-size: 14pt; color: #333; margin-top: 15px; }
+
+p {
+    font-size: 13pt;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+/* الاقتباسات والمصادر */
+.abstract-box, .highlight-box {
+    background: #f9f9f9;
+    padding: 15px;
+    border-right: 4px solid var(--accent-color);
+    margin: 15px 0;
+    font-size: 12pt;
+}
+
+.citation-header {
+    background: #e8f5e9;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.ref-link { font-size: 0.9em; display: block; margin-top: 5px; }
+.ref-link a { color: #2980b9; text-decoration: none; }
+
+/* القوائم */
+.rules-list li, .summary-list li {
+    margin-bottom: 8px;
+    font-size: 13pt;
+    font-weight: 600;
+}
+
+.rules-section {
+    background-color: #fffcf5;
+    padding: 20px;
+    border: 1px dashed var(--accent-color);
+    border-radius: 8px;
+}
+
+.small-note { font-size: 10pt; color: #777; margin-top: 10px; }
+
+/* فاصل الصفحات عند الطباعة/PDF */
+.page-break {
+    page-break-after: always;
+    height: 1px;
+    margin: 30px 0;
+    border-top: 1px dashed #ccc; /* يظهر فقط في الشاشة */
+}
+
+@media print {
+    body { background-color: white; padding: 0; }
+    .floating-controls { display: none; }
+    .paper-sheet { width: 100%; box-shadow: none; margin: 0; padding: 15mm; }
+    .page-break { border: none; }
+}
+
+@media (max-width: 850px) {
+    .paper-sheet { width: 95%; padding: 15px; }
+    .floating-controls { top: auto; bottom: 10px; left: 10px; right: 10px; flex-direction: row; justify-content: center; }
+}
